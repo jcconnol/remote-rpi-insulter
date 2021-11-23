@@ -1,4 +1,10 @@
 {
-	"1": "1st file",
-	"2": "2nd file"
+	"explicit": {
+		"1": "1st file",
+		"2": "2nd file"
+	},
+	"clean": {
+		"1": "1st file",
+		"2": "2nd file"
+	}
 }

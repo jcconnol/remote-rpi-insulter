@@ -37,17 +37,32 @@ if __name__ == '__main__':
             data=dataJSON.read()
             
         dataJSON = json.loads(data)
+        cleanJSON = dataJSON["clean"]
+        explicitJSON = dataJSON["explicit"]
+        
+        audioTypeSelected = "clean"
         
         while True:
             key, dir = getKey()
             key = key.decode() # This variable contains the name of the key
             dir = dir.decode() # This variable contains the direction (pressed/released)
-            # Only print the name when the key is pressed (and not released)
+            
+            # dir == 01 when key is pressed (and not released)
             if (dir == '01'):
-                if(key in dataJSON and dataJSON[key] != ''):
-                    print(dataJSON[key])
-                    playsound('audio.mp3')
-
+                if (key == 'ok'):
+                    if (audioTypeSelected == "clean"):
+                        audioTypeSelected = "explicit"
+                    elif (audioTypeSelected == "explicit"):
+                        audioTypeSelected = "clean"
+                        
+                elif(key in cleanJSON and cleanJSON[key] != '' and audioTypeSelected == 'clean'):
+                    print(cleanJSON[key])
+                    playsound(cleanJSON[key])
+                    
+                elif (key in explicitJSON and explicitJSON[key] != '' and audioTypeSelected == 'explicit'):
+                    print(explicitJSON[key])
+                    playsound(explicitJSON[key])
+                    
                 else:
                     print('button not found')
     except KeyboardInterrupt:
