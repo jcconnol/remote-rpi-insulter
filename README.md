@@ -9,7 +9,8 @@ lirc_rpi gpio_in_pin=18 gpio_out_pin=22
 
 ## add following to /etc/lirc/hardware.conf
 
-`# /etc/lirc/hardware.conf
+```vim
+# /etc/lirc/hardware.conf
 #
 # Arguments which will be used when launching lircd
 LIRCD_ARGS="--uinput"
@@ -31,7 +32,8 @@ MODULES="lirc_rpi"
  
 # Default configuration files for your hardware if any
 LIRCD_CONF=""
-LIRCMD_CONF=""`
+LIRCMD_CONF=""
+```
 
 ## run command and follow instructions very carefully
 (note that "the next button" is not a button labeled "next" on your remote)
